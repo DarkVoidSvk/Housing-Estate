@@ -9,6 +9,8 @@ namespace Housing_Estate
         public int flatNumber;
         public double area;
         public int rooms;
+        public int capacity = 4;
+
 
         public Flat(int setFlatNumber, double setArea, int setRooms)
         {
@@ -21,8 +23,12 @@ namespace Housing_Estate
 
         public void AddHabitant(Habitant habitant)
         {
-            habitantsList.Add(habitant);
-            habitant.habitantsFlat = this;
+            if (capacity > 0)
+            {
+                habitantsList.Add(habitant);
+                habitant.habitantsFlat = this;
+                capacity--;
+            }
         }
 
         public void GetInfoAboutAllHabitants()
